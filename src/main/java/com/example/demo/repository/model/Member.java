@@ -19,7 +19,7 @@ public class Member
     private String firstName;
     private String lastName;
     private Gender gender;
-    private LocalDate birthday;
+    private String birthday;
     private String email;
 
     private Member()
@@ -41,7 +41,7 @@ public class Member
         return gender;
     }
 
-    public LocalDate getBirthday()
+    public String getBirthday()
     {
         return birthday;
     }
@@ -92,7 +92,7 @@ public class Member
         private String firstName;
         private String lastName;
         private Gender gender;
-        private LocalDate birthday;
+        private String birthday;
         private String email;
 
         private MemberBuilder()
@@ -117,7 +117,7 @@ public class Member
             return this;
         }
 
-        public MemberBuilder birthday(LocalDate birthday)
+        public MemberBuilder birthday(String birthday)
         {
             this.birthday = birthday;
             return this;
