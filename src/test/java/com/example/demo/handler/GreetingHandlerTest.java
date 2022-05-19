@@ -17,7 +17,7 @@ import com.example.demo.repository.model.Member;
 public class GreetingHandlerTest
 {
     @Test
-    public void testGreetingMembers()
+    public void testGreetingMessages()
     {
         // Arrange
         List<Member> members = new ArrayList<>(2);
