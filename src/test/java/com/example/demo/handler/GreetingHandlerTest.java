@@ -3,7 +3,6 @@ package com.example.demo.handler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -24,14 +23,14 @@ public class GreetingHandlerTest
         members.add(Member.builder()
                           .firstName("Robert")
                           .lastName("Yen")
-                          .gender(Member.Gender.Male)
+                          .gender(Member.Gender.MALE)
                           .birthday("1985/8/8")
                           .email("robert.yen@linecorp.com")
                           .build());
         members.add(Member.builder()
                           .firstName("Sherry")
                           .lastName("Chen")
-                          .gender(Member.Gender.Female)
+                          .gender(Member.Gender.FEMALE)
                           .birthday("1993/8/8")
                           .email("sherry.lai@linecorp.com")
                           .build());
@@ -47,11 +46,11 @@ public class GreetingHandlerTest
         Response rsp = new GreetingHandler(repo).response();
 
         // Assert
-        Assert.assertEquals(rsp.getStatus(), Status.OK.getStatusCode());
+        Assert.assertEquals(Status.OK.getStatusCode(), rsp.getStatus());
         Assert.assertTrue(rsp.hasEntity());
         Assert.assertTrue(rsp.getEntity() instanceof List);
         List<GreetingResponse> greetingResponses = (List<GreetingResponse>) rsp.getEntity();
-        Assert.assertEquals(greetingResponses.size(), 2);
+        Assert.assertEquals(2, greetingResponses.size());
         for(GreetingResponse greetingResponse : greetingResponses)
         {
             Assert.assertNotNull(greetingResponse.getTitle());
@@ -60,7 +59,7 @@ public class GreetingHandlerTest
     }
 
     @Test
-    public void testGreetingMembersButNotFound()
+    public void testMembersNotFound()
     {
         // Arrange
         MemberRepository repo = new MemberRepository()
@@ -76,7 +75,7 @@ public class GreetingHandlerTest
         Response rsp = new GreetingHandler(repo).response();
 
         // Assert
-        Assert.assertEquals(rsp.getStatus(), Status.NOT_FOUND.getStatusCode());
+        Assert.assertEquals(Status.NOT_FOUND.getStatusCode(), rsp.getStatus());
         Assert.assertFalse(rsp.hasEntity());
     }
 }

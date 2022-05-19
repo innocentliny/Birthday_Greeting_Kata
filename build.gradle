@@ -29,7 +29,6 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.2.11'
     
     testImplementation group: 'org.testng', name: 'testng', version: '7.3.0'
-    testImplementation "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
 }
 
 test {

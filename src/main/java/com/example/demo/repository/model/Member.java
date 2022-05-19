@@ -1,6 +1,5 @@
 package com.example.demo.repository.model;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -13,8 +12,8 @@ public class Member
 {
     public enum Gender
     {
-        Male,
-        Female
+        MALE,
+        FEMALE
     }
     private String firstName;
     private String lastName;

@@ -20,7 +20,7 @@ public class LogUUIDFilter implements Filter
     @Override
     public void init(FilterConfig filterConfig) throws ServletException
     {
-
+        // Do nothing.
     }
 
     @Override
@@ -43,6 +43,6 @@ public class LogUUIDFilter implements Filter
     @Override
     public void destroy()
     {
-
+        // Do nothing
     }
 }

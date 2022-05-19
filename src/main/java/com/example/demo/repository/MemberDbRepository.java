@@ -29,14 +29,14 @@ public class MemberDbRepository implements MemberRepository
         members.add(Member.builder()
                           .firstName("Robert")
                           .lastName("Yen")
-                          .gender(Member.Gender.Male)
+                          .gender(Member.Gender.MALE)
                           .birthday("1985/8/8")
                           .email("robert.yen@linecorp.com")
                           .build());
         members.add(Member.builder()
                           .firstName("Sherry")
                           .lastName("Chen")
-                          .gender(Member.Gender.Female)
+                          .gender(Member.Gender.FEMALE)
                           .birthday("1993/8/8")
                           .email("sherry.lai@linecorp.com")
                           .build());
