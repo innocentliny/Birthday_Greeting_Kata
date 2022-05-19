@@ -46,13 +46,21 @@ public class GreetingHandler implements Handler
 
     private List<Message> createMessages(List<Member> members)
     {
-        List<Message> msgs = new ArrayList<>(members.size());
+        List<Message> messages = new ArrayList<>(members.size());
+        Message msg;
 
         for(Member member : members)
         {
-            msgs.add(msgCreator.create(member));
+            try
+            {
+                messages.add(msgCreator.create(member));
+            }
+            catch(IllegalArgumentException e)
+            {
+                log.warn("Can't create message from member({}): {}", member, e.getMessage());
+            }
         }
 
-        return msgs;
+        return messages;
     }
 }
