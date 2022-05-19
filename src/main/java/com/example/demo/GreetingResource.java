@@ -20,11 +20,14 @@ import com.example.demo.response.GreetingResponse;
 @Path("/")
 public class GreetingResource
 {
+    // We can use dependency injection framework to help.
+    private MemberRepository repository = MemberDbRepository.getInstance();
+
     @GET
     @Path("greeting")
     @Produces(MediaType.APPLICATION_JSON)
     public Response greeting()
     {
-        return new GreetingHandler(MemberDbRepository.getInstance()).response();
+        return new GreetingHandler(repository).response();
     }
 }

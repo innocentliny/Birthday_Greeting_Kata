@@ -21,7 +21,6 @@ public class GreetingHandler implements Handler
 
     private final MemberRepository repository;
 
-    // We can use dependency injection framework to help.
     public GreetingHandler(MemberRepository repository)
     {
         this.repository = repository;
