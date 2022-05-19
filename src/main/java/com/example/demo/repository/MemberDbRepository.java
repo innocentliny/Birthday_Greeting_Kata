@@ -8,20 +8,6 @@ import com.example.demo.repository.model.Member;
 
 public class MemberDbRepository implements MemberRepository
 {
-    private MemberDbRepository()
-    {
-    }
-
-    private static class InstanceHolder
-    {
-        private static final MemberDbRepository INSTANCE = new MemberDbRepository();
-    }
-
-    public static MemberDbRepository getInstance()
-    {
-        return InstanceHolder.INSTANCE;
-    }
-
     @Override
     public List<Member> getMembersBornToday()
     {

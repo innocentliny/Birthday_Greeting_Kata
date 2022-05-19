@@ -21,7 +21,7 @@ public class GreetingResource
     private MessageCreator msgCreator = new SimpleMessageCreator();
 
     // We can use dependency injection framework to help.
-    private MemberRepository repository = MemberDbRepository.getInstance();
+    private MemberRepository repository = new MemberDbRepository();
 
     @GET
     @Path("greeting")
