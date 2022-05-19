@@ -8,6 +8,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.example.demo.handler.GreetingHandler;
+import com.example.demo.message.MessageCreator;
+import com.example.demo.message.SimpleMessageCreator;
 import com.example.demo.repository.MemberDbRepository;
 import com.example.demo.repository.MemberRepository;
 
@@ -16,6 +18,9 @@ import com.example.demo.repository.MemberRepository;
 public class GreetingResource
 {
     // We can use dependency injection framework to help.
+    private MessageCreator msgCreator = new SimpleMessageCreator();
+
+    // We can use dependency injection framework to help.
     private MemberRepository repository = MemberDbRepository.getInstance();
 
     @GET
@@ -23,6 +28,6 @@ public class GreetingResource
     @Produces(MediaType.APPLICATION_JSON)
     public Response greeting()
     {
-        return new GreetingHandler(repository).response();
+        return new GreetingHandler(msgCreator, repository).response();
     }
 }

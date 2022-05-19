@@ -9,9 +9,10 @@ import javax.ws.rs.core.Response.Status;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
+import com.example.demo.message.Message;
+import com.example.demo.message.MessageCreator;
 import com.example.demo.repository.MemberRepository;
 import com.example.demo.repository.model.Member;
-import com.example.demo.response.GreetingResponse;
 
 public class GreetingHandlerTest
 {
@@ -42,19 +43,33 @@ public class GreetingHandlerTest
             }
         };
 
+        MessageCreator msgCreator = new MessageCreator()
+        {
+            @Override
+            public Message create(Member member)
+            {
+                Message msg = new Message();
+                msg.setTo(member.getEmail());
+                msg.setTitle("Subject: Happy birthday!");
+                msg.setContent("Happy birthday, dear " + member.getFirstName() + "!");
+                return msg;
+            }
+        };
+
         // Action
-        Response rsp = new GreetingHandler(repo).response();
+        Response rsp = new GreetingHandler(msgCreator, repo).response();
 
         // Assert
         Assert.assertEquals(Status.OK.getStatusCode(), rsp.getStatus());
         Assert.assertTrue(rsp.hasEntity());
         Assert.assertTrue(rsp.getEntity() instanceof List);
-        List<GreetingResponse> greetingResponses = (List<GreetingResponse>) rsp.getEntity();
-        Assert.assertEquals(2, greetingResponses.size());
-        for(GreetingResponse greetingResponse : greetingResponses)
+        List<Message> messages = (List<Message>) rsp.getEntity();
+        Assert.assertEquals(2, messages.size());
+        for(Message msg : messages)
         {
-            Assert.assertNotNull(greetingResponse.getTitle());
-            Assert.assertNotNull(greetingResponse.getContent());
+            Assert.assertNotNull(msg.getTo());
+            Assert.assertNotNull(msg.getTitle());
+            Assert.assertNotNull(msg.getContent());
         }
     }
 
@@ -71,8 +86,17 @@ public class GreetingHandlerTest
             }
         };
 
+        MessageCreator msgCreator = new MessageCreator()
+        {
+            @Override
+            public Message create(Member member)
+            {
+                return null;
+            }
+        };
+
         // Action
-        Response rsp = new GreetingHandler(repo).response();
+        Response rsp = new GreetingHandler(msgCreator, repo).response();
 
         // Assert
         Assert.assertEquals(Status.NOT_FOUND.getStatusCode(), rsp.getStatus());
