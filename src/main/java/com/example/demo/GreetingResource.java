@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 
 import com.example.demo.handler.GreetingHandler;
 import com.example.demo.message.MessageCreator;
-import com.example.demo.message.SimpleMessageCreator;
+import com.example.demo.message.SimpleFullNameMessageCreator;
 import com.example.demo.repository.MemberDbRepository;
 import com.example.demo.repository.MemberRepository;
 
@@ -18,7 +18,7 @@ import com.example.demo.repository.MemberRepository;
 public class GreetingResource
 {
     // We can use dependency injection framework to help.
-    private MessageCreator msgCreator = new SimpleMessageCreator();
+    private MessageCreator msgCreator = new SimpleFullNameMessageCreator();
 
     // We can use dependency injection framework to help.
     private MemberRepository repository = new MemberDbRepository();
