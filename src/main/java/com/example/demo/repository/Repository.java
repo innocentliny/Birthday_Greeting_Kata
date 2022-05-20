@@ -1,8 +1,11 @@
 package com.example.demo.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.repository.model.Member;
+import com.example.demo.repository.model.Member.Gender;
+import com.example.demo.repository.model.Promotion;
 
 public interface Repository
 {
@@ -13,4 +16,13 @@ public interface Repository
      * @since v1.0.0
      */
     List<Member> getMembersToGreet();
+
+    /**
+     * Get promotion data by gender.
+     * @param gender the member gender
+     * @return the promotion data, return {@link Optional#empty()} if no promotion
+     *
+     * @see Optional
+     */
+    Optional<Promotion> getPromotion(Gender gender);
 }

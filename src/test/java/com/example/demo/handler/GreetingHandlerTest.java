@@ -3,6 +3,7 @@ package com.example.demo.handler;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -13,6 +14,7 @@ import com.example.demo.message.Message;
 import com.example.demo.message.MessageCreator;
 import com.example.demo.repository.Repository;
 import com.example.demo.repository.model.Member;
+import com.example.demo.repository.model.Promotion;
 
 public class GreetingHandlerTest
 {
@@ -41,12 +43,18 @@ public class GreetingHandlerTest
             {
                 return members;
             }
+
+            @Override
+            public Optional<Promotion> getPromotion(Member.Gender gender)
+            {
+                return Optional.empty();
+            }
         };
 
         MessageCreator msgCreator = new MessageCreator()
         {
             @Override
-            public Message create(Member member)
+            public Message create(Member member, Optional<Promotion> promotion)
             {
                 Message msg = new Message();
                 msg.setTo(member.getEmail());
@@ -84,12 +92,18 @@ public class GreetingHandlerTest
             {
                 return Collections.emptyList();
             }
+
+            @Override
+            public Optional<Promotion> getPromotion(Member.Gender gender)
+            {
+                return Optional.empty();
+            }
         };
 
         MessageCreator msgCreator = new MessageCreator()
         {
             @Override
-            public Message create(Member member)
+            public Message create(Member member, Optional<Promotion> promotion)
             {
                 return null;
             }
