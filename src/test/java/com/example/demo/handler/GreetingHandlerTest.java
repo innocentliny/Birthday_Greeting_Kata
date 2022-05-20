@@ -37,7 +37,8 @@ public class GreetingHandlerTest
                           .birthday("1993/8/8")
                           .email("sherry.lai@linecorp.com")
                           .build());
-        Repository repo = new Repository() {
+        Repository repo = new Repository()
+        { // Use mock framework if needed.
             @Override
             public List<Member> getMembersToGreet()
             {
@@ -49,12 +50,18 @@ public class GreetingHandlerTest
             {
                 return Optional.empty();
             }
+
+            @Override
+            public Optional<String> getPictureUrl()
+            {
+                return Optional.empty();
+            }
         };
 
         MessageCreator msgCreator = new MessageCreator()
         {
             @Override
-            public Message create(Member member, Optional<Promotion> promotion)
+            public Message create(Member member, Optional<Promotion> promotion, Optional<String> pictureUrl)
             {
                 Message msg = new Message();
                 msg.setTo(member.getEmail());
@@ -85,7 +92,7 @@ public class GreetingHandlerTest
     public void testMembersNotFound()
     {
         // Arrange
-        Repository repo = new Repository()
+        Repository repo = new Repository() // Use mock framework if needed.
         {
             @Override
             public List<Member> getMembersToGreet()
@@ -98,12 +105,18 @@ public class GreetingHandlerTest
             {
                 return Optional.empty();
             }
+
+            @Override
+            public Optional<String> getPictureUrl()
+            {
+                return Optional.empty();
+            }
         };
 
         MessageCreator msgCreator = new MessageCreator()
         {
             @Override
-            public Message create(Member member, Optional<Promotion> promotion)
+            public Message create(Member member, Optional<Promotion> promotion, Optional<String> pictureUrl)
             {
                 return null;
             }

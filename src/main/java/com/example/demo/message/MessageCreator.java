@@ -17,6 +17,7 @@ public interface MessageCreator
      *
      * @param member the member to greeting
      * @param promotion the optional promotion data. Use {@link Optional#empty()} if no promotion
+     * @param pictureUrl the optional picture URL. Use {@link Optional#empty()} if no picture
      * @return the greeting message
      *
      * @throws IllegalArgumentException if message can't be created due to incorrect member data or null
@@ -24,5 +25,5 @@ public interface MessageCreator
      *
      * @see Optional
      */
-    Message create(Member member, Optional<Promotion> promotion);
+    Message create(Member member, Optional<Promotion> promotion, Optional<String> pictureUrl);
 }

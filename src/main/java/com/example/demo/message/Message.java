@@ -12,6 +12,7 @@ public class Message
     private String to;
     private String title;
     private String content;
+    private String pictureUrl;
 
     public String getTo()
     {
@@ -43,19 +44,29 @@ public class Message
         this.content = content;
     }
 
+    public String getPictureUrl()
+    {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl)
+    {
+        this.pictureUrl = pictureUrl;
+    }
+
     @Override
     public boolean equals(Object o)
     {
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Message message = (Message) o;
-        return Objects.equals(to, message.to) && Objects.equals(title, message.title) && Objects.equals(content, message.content);
+        return Objects.equals(to, message.to) && Objects.equals(title, message.title) && Objects.equals(content, message.content) && Objects.equals(pictureUrl, message.pictureUrl);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(to, title, content);
+        return Objects.hash(to, title, content, pictureUrl);
     }
 
     @Override
@@ -65,6 +76,7 @@ public class Message
             "to='" + to + '\'' +
             ", title='" + title + '\'' +
             ", content='" + content + '\'' +
+            ", pictureUrl='" + pictureUrl + '\'' +
             '}';
     }
 }

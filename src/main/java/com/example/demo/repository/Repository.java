@@ -25,4 +25,12 @@ public interface Repository
      * @see Optional
      */
     Optional<Promotion> getPromotion(Gender gender);
+
+    /**
+     * Get greeting picture.
+     * @return the URL of picture, return {@link Optional#empty()} if no picture
+     *
+     * @see Optional
+     */
+    Optional<String> getPictureUrl();
 }

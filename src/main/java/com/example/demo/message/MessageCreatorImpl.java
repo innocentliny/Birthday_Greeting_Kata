@@ -17,7 +17,7 @@ import com.sanctionco.jmail.JMail;
 public class MessageCreatorImpl implements MessageCreator
 {
     @Override
-    public Message create(Member member, Optional<Promotion> promotion)
+    public Message create(Member member, Optional<Promotion> promotion, Optional<String> pictureUrl)
     {
         if(Objects.isNull(member))
         {
@@ -36,10 +36,10 @@ public class MessageCreatorImpl implements MessageCreator
 
         Message msg = new Message();
         msg.setTo(member.getEmail());
-        msg.setTitle("Subject: Happy birthday!"); // No i18n support for simplification.
+        msg.setTitle("Subject: Happy birthday!");
 
-        StringBuilder contentBuilder = new StringBuilder("Happy birthday, dear " + member.getFirstName() + "!");
-        if(Objects.nonNull(promotion) && promotion.isPresent())
+        StringBuilder contentBuilder = new StringBuilder("Happy birthday, dear `" + member.getFirstName() + "`!");
+        if(promotion.isPresent())
         {
             contentBuilder.append('\n')
                           .append("We offer special discount ")
@@ -49,6 +49,7 @@ public class MessageCreatorImpl implements MessageCreator
                           .append(String.join(", ", promotion.get().getItems()));
         }
         msg.setContent(contentBuilder.toString());
+        msg.setPictureUrl(pictureUrl.orElse(null));
         return msg;
     }
 }

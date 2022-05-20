@@ -52,7 +52,7 @@ public class GreetingHandler implements Handler
         {
             try
             {
-                messages.add(msgCreator.create(member, repository.getPromotion(member.getGender())));
+                messages.add(msgCreator.create(member, repository.getPromotion(member.getGender()), repository.getPictureUrl()));
             }
             catch(IllegalArgumentException e)
             {
