@@ -1,12 +1,14 @@
 package com.example.demo.message;
 
 import java.util.Objects;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * The greeing message.
  *
  * @since 1.1.0
  */
+@XmlRootElement(name = "message")
 public class Message
 {
     private String to;

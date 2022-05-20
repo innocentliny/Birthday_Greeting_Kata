@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.example'
-version '5.0.0'
+version '6.0.0'
 
 repositories {
     mavenCentral()
@@ -28,7 +28,8 @@ dependencies {
     implementation "org.glassfish.jersey.containers:jersey-container-servlet:${jerseyVersion}"
     implementation "org.glassfish.jersey.media:jersey-media-json-jackson:${jerseyVersion}"
     implementation "org.glassfish.jersey.inject:jersey-hk2:${jerseyVersion}"
-    
+    implementation "org.glassfish.jersey.media:jersey-media-jaxb:${jerseyVersion}"
+
     // Logging
     implementation 'ch.qos.logback:logback-classic:1.2.11'
 

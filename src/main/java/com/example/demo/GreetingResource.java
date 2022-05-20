@@ -25,7 +25,7 @@ public class GreetingResource
 
     @GET
     @Path("greeting")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response greeting()
     {
         return new GreetingHandler(msgCreator, repository).response();
