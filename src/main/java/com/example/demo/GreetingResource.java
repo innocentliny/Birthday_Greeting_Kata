@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import com.example.demo.handler.GreetingHandler;
 import com.example.demo.message.MessageCreator;
 import com.example.demo.message.SimpleMessageCreator;
-import com.example.demo.repository.MemberDbRepository;
+import com.example.demo.repository.MemberFileRepository;
 import com.example.demo.repository.MemberRepository;
 
 @Singleton
@@ -21,7 +21,7 @@ public class GreetingResource
     private MessageCreator msgCreator = new SimpleMessageCreator();
 
     // We can use dependency injection framework to help.
-    private MemberRepository repository = new MemberDbRepository();
+    private MemberRepository repository = new MemberFileRepository();
 
     @GET
     @Path("greeting")

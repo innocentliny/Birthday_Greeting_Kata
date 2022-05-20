@@ -7,9 +7,9 @@ import java.util.List;
 import com.example.demo.repository.model.Member;
 
 /**
- * Member data from database. (simulation only)
+ * Member data from files. (simulation only)
  */
-public class MemberDbRepository implements MemberRepository
+public class MemberFileRepository implements MemberRepository
 {
     @Override
     public List<Member> getMembersBornToday()
