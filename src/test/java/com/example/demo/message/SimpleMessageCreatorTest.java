@@ -9,6 +9,7 @@ import com.example.demo.repository.model.Member.MemberBuilder;
 
 public class SimpleMessageCreatorTest
 {
+    private MessageCreator msgCreator = new SimpleMessageCreator();
     private MemberBuilder memberBuilder = Member.builder();
 
     @BeforeMethod
@@ -24,28 +25,24 @@ public class SimpleMessageCreatorTest
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testNullMemberThenIllegalArgumentException()
     {
-        MessageCreator msgCreator = new SimpleMessageCreator();
         msgCreator.create(null);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testNoEmailThenIllegalArgumentException()
     {
-        MessageCreator msgCreator = new SimpleMessageCreator();
         msgCreator.create(memberBuilder.email(null).build());
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testInvalidEmailThenIllegalArgumentException()
     {
-        MessageCreator msgCreator = new SimpleMessageCreator();
         msgCreator.create(memberBuilder.email("ooxx@").build());
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testNoFirstNameThenIllegalArgumentException()
     {
-        MessageCreator msgCreator = new SimpleMessageCreator();
         msgCreator.create(memberBuilder.firstName(null).build());
     }
 
@@ -53,7 +50,6 @@ public class SimpleMessageCreatorTest
     public void testMemberWithCorrectData()
     {
         // Arrange
-        MessageCreator msgCreator = new SimpleMessageCreator();
         Member member = memberBuilder.build();
 
         // Action
