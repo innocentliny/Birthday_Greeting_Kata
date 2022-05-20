@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import com.example.demo.message.Message;
 import com.example.demo.message.MessageCreator;
-import com.example.demo.repository.MemberRepository;
+import com.example.demo.repository.Repository;
 import com.example.demo.repository.model.Member;
 
 public class GreetingHandlerTest
@@ -35,7 +35,7 @@ public class GreetingHandlerTest
                           .birthday("1993/8/8")
                           .email("sherry.lai@linecorp.com")
                           .build());
-        MemberRepository repo = new MemberRepository() {
+        Repository repo = new Repository() {
             @Override
             public List<Member> getMembersToGreet()
             {
@@ -77,7 +77,7 @@ public class GreetingHandlerTest
     public void testMembersNotFound()
     {
         // Arrange
-        MemberRepository repo = new MemberRepository()
+        Repository repo = new Repository()
         {
             @Override
             public List<Member> getMembersToGreet()

@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.example.demo.repository.model.Member;
 
-public class MemberDbRepository implements MemberRepository
+public class DbRepository implements Repository
 {
     @Override
     public List<Member> getMembersToGreet()

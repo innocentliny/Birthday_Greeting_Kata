@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.demo.repository.model.Member;
 
-public interface MemberRepository
+public interface Repository
 {
     /**
      * Get members to greet.
