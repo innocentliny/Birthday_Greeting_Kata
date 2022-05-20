@@ -7,9 +7,9 @@ import java.util.List;
 import com.example.demo.repository.model.Member;
 
 /**
- * Member data from database.
+ * Member data from file.
  */
-public class DbRepository implements Repository
+public class FileRepository implements Repository
 {
     @Override
     public List<Member> getMembersToGreet()

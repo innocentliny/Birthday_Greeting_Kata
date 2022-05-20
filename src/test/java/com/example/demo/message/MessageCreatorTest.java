@@ -46,12 +46,6 @@ public class MessageCreatorTest
         msgCreator.create(memberBuilder.firstName(null).build());
     }
 
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void testNoLastNameThenIllegalArgumentException()
-    {
-        msgCreator.create(memberBuilder.lastName(null).build());
-    }
-
     @Test
     public void testMessageWithCorrectData()
     {
@@ -66,6 +60,5 @@ public class MessageCreatorTest
         Assert.assertNotNull(msg.getTitle());
         Assert.assertNotNull(msg.getContent());
         Assert.assertTrue(msg.getContent().contains(member.getFirstName()));
-        Assert.assertTrue(msg.getContent().contains(member.getLastName()));
     }
 }
