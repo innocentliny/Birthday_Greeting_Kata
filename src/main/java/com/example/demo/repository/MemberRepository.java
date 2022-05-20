@@ -7,10 +7,10 @@ import com.example.demo.repository.model.Member;
 public interface MemberRepository
 {
     /**
-     * Get members born today.
+     * Get members to greet.
      * @return unmodified list or empty list if not found.
      *
      * @since v1.0.0
      */
-    List<Member> getMembersBornToday();
+    List<Member> getMembersToGreet();
 }

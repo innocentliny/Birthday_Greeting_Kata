@@ -30,7 +30,7 @@ public class GreetingHandler implements Handler
     @Override
     public Response response()
     {
-        List<Member> members = this.repository.getMembersBornToday();
+        List<Member> members = this.repository.getMembersToGreet();
         log.info("Got members born today: {}", members);
 
         if(Objects.isNull(members) || members.isEmpty())

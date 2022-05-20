@@ -37,7 +37,7 @@ public class GreetingHandlerTest
                           .build());
         MemberRepository repo = new MemberRepository() {
             @Override
-            public List<Member> getMembersBornToday()
+            public List<Member> getMembersToGreet()
             {
                 return members;
             }
@@ -80,7 +80,7 @@ public class GreetingHandlerTest
         MemberRepository repo = new MemberRepository()
         {
             @Override
-            public List<Member> getMembersBornToday()
+            public List<Member> getMembersToGreet()
             {
                 return Collections.emptyList();
             }
