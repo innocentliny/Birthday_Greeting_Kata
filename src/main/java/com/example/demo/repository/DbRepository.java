@@ -6,11 +6,12 @@ import java.util.List;
 
 import com.example.demo.repository.model.Member;
 
-public class MemberDbRepository implements MemberRepository
+public class DbRepository implements Repository
 {
     @Override
-    public List<Member> getMembersBornToday()
+    public List<Member> getMembersToGreet()
     {
+        // Will get members born today.
         List<Member> members = new ArrayList<>(2);
         members.add(Member.builder()
                           .firstName("Robert")

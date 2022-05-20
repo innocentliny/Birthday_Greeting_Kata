@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 import com.example.demo.repository.model.Member;
 import com.example.demo.repository.model.Member.MemberBuilder;
 
-public class SimpleMessageCreatorTest
+public class MessageCreatorTest
 {
-    private MessageCreator msgCreator = new SimpleMessageCreator();
+    private MessageCreator msgCreator = new MessageCreatorImpl();
     private MemberBuilder memberBuilder = Member.builder();
 
     @BeforeMethod
@@ -46,8 +46,14 @@ public class SimpleMessageCreatorTest
         msgCreator.create(memberBuilder.firstName(null).build());
     }
 
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testNoLastNameThenIllegalArgumentException()
+    {
+        msgCreator.create(memberBuilder.lastName(null).build());
+    }
+
     @Test
-    public void testMemberWithCorrectData()
+    public void testMessageWithCorrectData()
     {
         // Arrange
         Member member = memberBuilder.build();
@@ -60,5 +66,6 @@ public class SimpleMessageCreatorTest
         Assert.assertNotNull(msg.getTitle());
         Assert.assertNotNull(msg.getContent());
         Assert.assertTrue(msg.getContent().contains(member.getFirstName()));
+        Assert.assertTrue(msg.getContent().contains(member.getLastName()));
     }
 }

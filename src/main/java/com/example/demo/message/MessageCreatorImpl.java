@@ -12,7 +12,7 @@ import com.sanctionco.jmail.JMail;
  *
  * @since 1.1.0
  */
-public class SimpleMessageCreator implements MessageCreator
+public class MessageCreatorImpl implements MessageCreator
 {
     @Override
     public Message create(Member member)
@@ -32,10 +32,15 @@ public class SimpleMessageCreator implements MessageCreator
             throw new IllegalArgumentException("No first name.");
         }
 
+        if(StringUtils.isBlank(member.getLastName()))
+        {
+            throw new IllegalArgumentException("No last name.");
+        }
+
         Message msg = new Message();
         msg.setTo(member.getEmail());
-        msg.setTitle("Subject: Happy birthday!"); // No i18n support for simplification.
-        msg.setContent("Happy birthday, dear " + member.getFirstName() + "!");
+        msg.setTitle("Subject: Happy birthday!");
+        msg.setContent("Happy birthday, dear " + member.getLastName() + ", " + member.getFirstName() + "!");
         return msg;
     }
 }

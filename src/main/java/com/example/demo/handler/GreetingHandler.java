@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.example.demo.message.Message;
 import com.example.demo.message.MessageCreator;
-import com.example.demo.repository.MemberRepository;
+import com.example.demo.repository.Repository;
 import com.example.demo.repository.model.Member;
 
 public class GreetingHandler implements Handler
@@ -19,9 +19,9 @@ public class GreetingHandler implements Handler
     private static final Logger log = LoggerFactory.getLogger(GreetingHandler.class); // It's ok to use "log" instead of "LOG" for me.
 
     private final MessageCreator msgCreator;
-    private final MemberRepository repository;
+    private final Repository repository;
 
-    public GreetingHandler(MessageCreator msgCreator, MemberRepository repository)
+    public GreetingHandler(MessageCreator msgCreator, Repository repository)
     {
         this.msgCreator = msgCreator;
         this.repository = repository;
@@ -30,7 +30,7 @@ public class GreetingHandler implements Handler
     @Override
     public Response response()
     {
-        List<Member> members = this.repository.getMembersBornToday();
+        List<Member> members = this.repository.getMembersToGreet();
         log.info("Got members born today: {}", members);
 
         if(Objects.isNull(members) || members.isEmpty())

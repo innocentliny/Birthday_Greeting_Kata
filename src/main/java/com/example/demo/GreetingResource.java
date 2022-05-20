@@ -9,19 +9,19 @@ import javax.ws.rs.core.Response;
 
 import com.example.demo.handler.GreetingHandler;
 import com.example.demo.message.MessageCreator;
-import com.example.demo.message.SimpleFullNameMessageCreator;
-import com.example.demo.repository.MemberDbRepository;
-import com.example.demo.repository.MemberRepository;
+import com.example.demo.message.MessageCreatorImpl;
+import com.example.demo.repository.DbRepository;
+import com.example.demo.repository.Repository;
 
 @Singleton
 @Path("/")
 public class GreetingResource
 {
     // We can use dependency injection framework to help.
-    private MessageCreator msgCreator = new SimpleFullNameMessageCreator();
+    private MessageCreator msgCreator = new MessageCreatorImpl();
 
     // We can use dependency injection framework to help.
-    private MemberRepository repository = new MemberDbRepository();
+    private Repository repository = new DbRepository();
 
     @GET
     @Path("greeting")

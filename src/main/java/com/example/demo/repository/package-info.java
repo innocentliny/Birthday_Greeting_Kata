@@ -1,5 +1,5 @@
 /**
- * The golden source of member records.
+ * The golden source data.
  *
  * @since 1.0.0
  */
