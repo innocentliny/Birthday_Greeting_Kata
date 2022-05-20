@@ -22,12 +22,12 @@ public class SimpleMessageCreator implements MessageCreator
             throw new IllegalArgumentException("Member is null.");
         }
 
-        if(JMail.strictValidator().isInvalid(member.getEmail())) // Check non-null only for simplification.
+        if(JMail.strictValidator().isInvalid(member.getEmail()))
         {
             throw new IllegalArgumentException("Email format error.");
         }
 
-        if(StringUtils.isBlank(member.getFirstName())) // Check non-null only for simplification.
+        if(StringUtils.isBlank(member.getFirstName()))
         {
             throw new IllegalArgumentException("No first name.");
         }
