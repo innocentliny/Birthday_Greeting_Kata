@@ -55,12 +55,17 @@ public class SimpleFullNameMessageCreatorTest
     @Test
     public void testMemberWithCorrectData()
     {
+        // Arrange
+        Member member = memberBuilder.build();
+
         // Action
-        Message msg = msgCreator.create(memberBuilder.build());
+        Message msg = msgCreator.create(member);
 
         // Assert
-        Assert.assertNotNull(msg.getTo());
+        Assert.assertEquals(member.getEmail(), msg.getTo());
         Assert.assertNotNull(msg.getTitle());
         Assert.assertNotNull(msg.getContent());
+        Assert.assertTrue(msg.getContent().contains(member.getFirstName()));
+        Assert.assertTrue(msg.getContent().contains(member.getLastName()));
     }
 }
