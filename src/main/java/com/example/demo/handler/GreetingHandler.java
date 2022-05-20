@@ -47,7 +47,6 @@ public class GreetingHandler implements Handler
     private List<Message> createMessages(List<Member> members)
     {
         List<Message> messages = new ArrayList<>(members.size());
-        Message msg;
 
         for(Member member : members)
         {
