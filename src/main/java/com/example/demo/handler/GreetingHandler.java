@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
@@ -41,13 +42,13 @@ public class GreetingHandler implements Handler
 
         List<Message> messages = createMessages(members);
         log.info("Response: {}", messages);
-        return Response.ok(messages).build();
+        GenericEntity<List<Message>> entity = new GenericEntity<List<Message>>(messages){};
+        return Response.ok(entity).build();
     }
 
     private List<Message> createMessages(List<Member> members)
     {
         List<Message> messages = new ArrayList<>(members.size());
-        Message msg;
 
         for(Member member : members)
         {
